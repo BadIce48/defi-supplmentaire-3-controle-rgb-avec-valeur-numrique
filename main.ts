@@ -6,6 +6,7 @@ basic.forever(function () {
     if (état_actuel != état_passé && état_actuel == 1) {
         lumiere += 100
     }
+    état_passé = état_actuel
     if (lumiere == 1000) {
         lumiere = 0
     }
