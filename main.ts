@@ -7,16 +7,23 @@ basic.forever(function () {
         lumiere += 100
     }
     état_passé = état_actuel
-})
-basic.forever(function () {
-    if (lumiere > 1000 && lumiere < 2000) {
+    if (lumiere >= 0 && lumiere < 1000) {
         pins.analogWritePin(AnalogPin.P1, lumiere)
-        pins.analogWritePin(AnalogPin.P2, lumiere)
-        pins.analogWritePin(AnalogPin.P8, lumiere)
+        pins.analogWritePin(AnalogPin.P2, 0)
+        pins.analogWritePin(AnalogPin.P8, 0)
     } else if (lumiere > 1000 && lumiere < 2000) {
         pins.analogWritePin(AnalogPin.P1, 1000)
-        pins.analogWritePin(AnalogPin.P2, lumiere)
+        pins.analogWritePin(AnalogPin.P2, lumiere - 1000)
+        pins.analogWritePin(AnalogPin.P8, 0)
     } else {
-        pins.analogWritePin(AnalogPin.P1, lumiere)
+        pins.analogWritePin(AnalogPin.P1, 0)
+        pins.analogWritePin(AnalogPin.P2, 0)
+        pins.analogWritePin(AnalogPin.P8, lumiere)
     }
+    if (lumiere >= 3000) {
+        lumiere = 0
+    }
+})
+basic.forever(function () {
+	
 })
